@@ -1,5 +1,5 @@
 /*!
- * to-path <https://github.com/jonschlinkert/to-path>
+ * to-object-path <https://github.com/jonschlinkert/to-object-path>
  *
  * Copyright (c) 2015, Jon Schlinkert.
  * Licensed under the MIT License.
@@ -7,6 +7,14 @@
 
 'use strict';
 
-module.exports = function toPath() {
-  return [].concat.apply([], arguments).join('.');
+var isArguments = require('is-arguments');
+var flatten = require('arr-flatten');
+
+module.exports = function toPath(args) {
+  if (isArguments(args)) {
+    args = [].slice.call(args);
+  } else {
+    args = [].slice.call(arguments);
+  }
+  return flatten(args).join('.');
 };
