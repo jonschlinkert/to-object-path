@@ -1,10 +1,13 @@
-var Base = require('base-methods');
+'use strict';
+
+var Base = require('base');
 var toPath = require('./');
 
 function App(options) {
   Base.call(this);
   this.options = options || {};
 }
+
 Base.extend(App);
 
 App.prototype.option = function(key, value) {
